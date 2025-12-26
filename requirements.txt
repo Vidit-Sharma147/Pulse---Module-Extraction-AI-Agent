@@ -1,0 +1,14 @@
+streamlit
+requests
+beautifulsoup4
+trafilatura
+lxml
+tldextract
+requests-cache
+readability-lxml
+urllib3
+fastapi
+uvicorn
+markdown
+pdfminer.six
+pyyaml
