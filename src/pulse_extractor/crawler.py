@@ -104,52 +104,104 @@ def _fetch(url: str, timeout: int = 20, retries: int = 2) -> Optional[Tuple[str,
 
 
 def crawl_urls(urls: List[str], max_pages: int = 200, per_domain_limit: int = 150, delay: float = 0.3) -> List[Page]:
+    # Normalize input URLs and organize them into per-domain queues to ensure fair crawling across domains.
     normalized = [u for u in (_normalize_url(u) for u in urls) if u]
-    queue: List[str] = []
+    domain_queues: Dict[str, List[str]] = {}
+    domain_order: List[str] = []
     visited: Set[str] = set()
     pages: List[Page] = []
     domain_counts: Dict[str, int] = {}
 
     for u in normalized:
-        queue.append(u)
+        dom = _domain(u)
+        if dom not in domain_queues:
+            domain_queues[dom] = []
+            domain_order.append(dom)
+        domain_queues[dom].append(u)
 
     unlimited_pages = max_pages is None or max_pages <= 0
     unlimited_domain = per_domain_limit is None or per_domain_limit <= 0
 
-    while queue and (unlimited_pages or len(pages) < max_pages):
-        url = queue.pop(0)
-        if url in visited:
-            continue
-        visited.add(url)
+    # Fair-share budgets: ensure at least some pages per domain when a global cap is set.
+    domain_budget: Dict[str, int] = {}
+    domain_used: Dict[str, int] = {d: 0 for d in domain_order}
+    if not unlimited_pages:
+        # At least 1 per domain; distribute base quota equally.
+        base = max(1, max_pages // max(1, len(domain_order)))
+        for d in domain_order:
+            budget = base
+            if not unlimited_domain:
+                budget = min(budget, per_domain_limit)
+            domain_budget[d] = budget
+    else:
+        for d in domain_order:
+            domain_budget[d] = float('inf')
 
-        dom = _domain(url)
-        count = domain_counts.get(dom, 0)
-        if not unlimited_domain and count >= per_domain_limit:
-            continue
-        if not _robots_allowed(url):
-            continue
+    def _has_work() -> bool:
+        for q in domain_queues.values():
+            if q:
+                return True
+        return False
 
-        fetched = _fetch(url)
-        if not fetched:
-            continue
-        html, content_type = fetched
-        pages.append(Page(url=url, html=html, content_type=content_type))
-        domain_counts[dom] = count + 1
-        logger.info(f"Fetched {url}")
-
-        soup = BeautifulSoup(html, 'lxml')
-        for a in soup.find_all('a', href=True):
-            href = a.get('href')
-            if not _is_relevant_link(href):
+    # Round-robin across domains; first pass respects fair budgets, then fill remaining cap.
+    fair_phase = True
+    while _has_work() and (unlimited_pages or len(pages) < max_pages):
+        for dom in list(domain_order):
+            q = domain_queues.get(dom, [])
+            if not q:
                 continue
-            new_url = urljoin(url, href)
-            new_dom = _domain(new_url)
-            if new_dom != dom:
-                # restrict to same domain
-                continue
-            if new_url not in visited:
-                queue.append(new_url)
 
-        time.sleep(delay)
+            # Stop if we've reached the page cap
+            if not unlimited_pages and len(pages) >= max_pages:
+                break
+
+            # In fair phase, skip domains that reached their budget
+            if fair_phase and domain_used.get(dom, 0) >= domain_budget.get(dom, 0):
+                continue
+
+            url = q.pop(0)
+            if url in visited:
+                continue
+            visited.add(url)
+
+            count = domain_counts.get(dom, 0)
+            if not unlimited_domain and count >= per_domain_limit:
+                continue
+            if not _robots_allowed(url):
+                continue
+
+            fetched = _fetch(url)
+            if not fetched:
+                continue
+            html, content_type = fetched
+            pages.append(Page(url=url, html=html, content_type=content_type))
+            domain_counts[dom] = count + 1
+            domain_used[dom] = domain_used.get(dom, 0) + 1
+            logger.info(f"Fetched {url}")
+
+            soup = BeautifulSoup(html, 'lxml')
+            for a in soup.find_all('a', href=True):
+                href = a.get('href')
+                if not _is_relevant_link(href):
+                    continue
+                new_url = urljoin(url, href)
+                new_dom = _domain(new_url)
+                if new_dom != dom:
+                    # restrict to same domain
+                    continue
+                if new_url not in visited:
+                    domain_queues[new_dom].append(new_url)
+
+            time.sleep(delay)
+
+        # Switch out of fair phase when all budgets are satisfied or no work remains for budgeted domains
+        if fair_phase and not unlimited_pages:
+            all_satisfied = True
+            for d in domain_order:
+                if domain_used.get(d, 0) < domain_budget.get(d, 0) and domain_queues.get(d):
+                    all_satisfied = False
+                    break
+            if all_satisfied:
+                fair_phase = False
 
     return pages

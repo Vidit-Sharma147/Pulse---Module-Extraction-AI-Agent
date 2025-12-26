@@ -1,0 +1,40 @@
+module,description,submodule,sub_description,confidence
+WordPress overview,Learn about WordPress and its community.,Where to start?,Are you new to WordPress? Learn how to get started now.,0.4
+WordPress overview,Learn about WordPress and its community.,FAQs,A list of common WordPress questions from the community.,0.4
+WordPress overview,Learn about WordPress and its community.,About WordPress,Learn more about the WordPress project and its history.,0.4
+Technical guides,Learn how to install WordPress and keep it secure and healthy.,Installation,Need a hand installing WordPress? This section will help you.,1.0
+Technical guides,Learn how to install WordPress and keep it secure and healthy.,Maintenance,Keep your site updated and ready with the articles in this section.,1.0
+Technical guides,Learn how to install WordPress and keep it secure and healthy.,Security,"Everything you need to know to protect your site, from password best practices to privacy.",1.0
+Support guides,Get to know how to publish with WordPress.,Dashboard,Get to know the control center of your site.,0.4
+Support guides,Get to know how to publish with WordPress.,Publishing,Learn how to create and publish your content.,0.4
+Support guides,Get to know how to publish with WordPress.,Media,Learn how to manage your media files.,0.4
+Customization,Get the look and feel you want on your site.,Appearance,Learn how to give the look and feel you want to your site.,1.0
+Customization,Get the look and feel you want on your site.,Default themes,Get information on the default themes that ship with WordPress.,1.0
+Customization,Get the look and feel you want on your site.,Media Blocks,"Learn about the Audio, Cover, File, Gallery, Image, Media & Text, and the Video blocks.",1.0
+Customization,Get the look and feel you want on your site.,Text Blocks,Learn about the basic text blocks that make up the main content of your website.,1.0
+Customization,Get the look and feel you want on your site.,Design Blocks,"Learn about the various layout blocks, including Group, Row, Stack, Buttons, Columns, and more.",1.0
+Customization,Get the look and feel you want on your site.,Embed Blocks,"Learn about all the included embed blocks, and how to configure them.",1.0
+Customization,Get the look and feel you want on your site.,Widget Blocks,"Learn about Archives, Calendar, and the other blocks that are available to use as widgets.",1.0
+Customization,Get the look and feel you want on your site.,Theme Blocks,Learn about how to apply theme-specific blocks for your block themes and custom templates.,1.0
+Chargebee's Product Suite,Get a comprehensive view of all the products offered by Chargebee and their key features.,,,1.0
+Billing,"Manage subscriptions, billing, and invoicing at scale.
+Subscriptions Entitlements Usage Based Billing Checkout and Portal
+Explore More.",,,1.0
+Payments,"Automate recurring payments for customers across the globe.
+Payment Methods Payment Gateways Dunning
+Explore More.",,,1.0
+Receivables,"Get paid faster with a proactive collection strategy.
+Payment Failure Recovery Communications Reports and Analytics
+Explore More.",,,1.0
+RevRec,"Unburden your finance team with automated and compliant revenue recognition.
+Revenue Rules Data Processing & Validation General Ledger & Accounting
+Explore More.",,,1.0
+Retention,"Reduce churn and grow lifetime value with an experience your customers canât resist.
+Managing Experiences Reports and Analytics Starter Churn Insights
+Explore More.",,,1.0
+Learn about Chargebeewith Videos,Learn all about Chargebee products with the help of our informative and engaging videos.,,,1.0
+Grow Faster with Integrations,Find the right apps that integrate and extend Chargebee to help your business grow faster.,,,1.0
+What's New in Chargebee?,Find all the latest updates happening at Chargebee here.,,,0.4
+Usage Based Billing,"Track usage data for your products and services accurately in Chargebee Billing, and charge customers based on their actual consumption.
+Read more.",,,1.0
+Can't find what you're looking for?,There are more ways to connect.,,,0.4

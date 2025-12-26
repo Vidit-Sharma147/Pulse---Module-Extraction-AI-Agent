@@ -1,0 +1,108 @@
+- module: WordPress overview
+  Description: Learn about WordPress and its community.
+  Submodules:
+    Where to start?: Are you new to WordPress? Learn how to get started now.
+    FAQs: A list of common WordPress questions from the community.
+    About WordPress: Learn more about the WordPress project and its history.
+  confidence: 0.4
+- module: Technical guides
+  Description: Learn how to install WordPress and keep it secure and healthy.
+  Submodules:
+    Installation: Need a hand installing WordPress? This section will help you.
+    Maintenance: Keep your site updated and ready with the articles in this section.
+    Security: Everything you need to know to protect your site, from password best
+      practices to privacy.
+  confidence: 1.0
+- module: Support guides
+  Description: Get to know how to publish with WordPress.
+  Submodules:
+    Dashboard: Get to know the control center of your site.
+    Publishing: Learn how to create and publish your content.
+    Media: Learn how to manage your media files.
+  confidence: 0.4
+- module: Customization
+  Description: Get the look and feel you want on your site.
+  Submodules:
+    Appearance: Learn how to give the look and feel you want to your site.
+    Default themes: Get information on the default themes that ship with WordPress.
+    Media Blocks: Learn about the Audio, Cover, File, Gallery, Image, Media & Text,
+      and the Video blocks.
+    Text Blocks: Learn about the basic text blocks that make up the main content of
+      your website.
+    Design Blocks: Learn about the various layout blocks, including Group, Row, Stack,
+      Buttons, Columns, and more.
+    Embed Blocks: Learn about all the included embed blocks, and how to configure
+      them.
+    Widget Blocks: Learn about Archives, Calendar, and the other blocks that are available
+      to use as widgets.
+    Theme Blocks: Learn about how to apply theme-specific blocks for your block themes
+      and custom templates.
+  confidence: 1.0
+- module: Chargebee's Product Suite
+  Description: Get a comprehensive view of all the products offered by Chargebee and
+    their key features.
+  Submodules: {}
+  confidence: 1.0
+- module: Billing
+  Description: 'Manage subscriptions, billing, and invoicing at scale.
+
+    Subscriptions Entitlements Usage Based Billing Checkout and Portal
+
+    Explore More.'
+  Submodules: {}
+  confidence: 1.0
+- module: Payments
+  Description: 'Automate recurring payments for customers across the globe.
+
+    Payment Methods Payment Gateways Dunning
+
+    Explore More.'
+  Submodules: {}
+  confidence: 1.0
+- module: Receivables
+  Description: 'Get paid faster with a proactive collection strategy.
+
+    Payment Failure Recovery Communications Reports and Analytics
+
+    Explore More.'
+  Submodules: {}
+  confidence: 1.0
+- module: RevRec
+  Description: 'Unburden your finance team with automated and compliant revenue recognition.
+
+    Revenue Rules Data Processing & Validation General Ledger & Accounting
+
+    Explore More.'
+  Submodules: {}
+  confidence: 1.0
+- module: Retention
+  Description: "Reduce churn and grow lifetime value with an experience your customers\
+    \ canâ\x80\x99t resist.\nManaging Experiences Reports and Analytics Starter Churn\
+    \ Insights\nExplore More."
+  Submodules: {}
+  confidence: 1.0
+- module: Learn about Chargebeewith Videos
+  Description: Learn all about Chargebee products with the help of our informative
+    and engaging videos.
+  Submodules: {}
+  confidence: 1.0
+- module: Grow Faster with Integrations
+  Description: Find the right apps that integrate and extend Chargebee to help your
+    business grow faster.
+  Submodules: {}
+  confidence: 1.0
+- module: What's New in Chargebee?
+  Description: Find all the latest updates happening at Chargebee here.
+  Submodules: {}
+  confidence: 0.4
+- module: Usage Based Billing
+  Description: 'Track usage data for your products and services accurately in Chargebee
+    Billing, and charge customers based on their actual consumption.
+
+    Read more.'
+  Submodules: {}
+  confidence: 1.0
+- module: Can't find what you're looking for?
+  Description: There are more ways to connect.
+  Submodules: {}
+  confidence: 0.4
